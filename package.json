@@ -1,28 +1,31 @@
 {
 	"name": "github-action-release-changelog",
-	"type": "module",
-	"description": "GitHub Action for generating a changelog of all the git commits between the new tag and the latest tags.",
-	"repository": "github:kitschpatrol/github-action-release-changelog",
-	"homepage": "https://github.com/kitschpatrol/github-action-release-changelog",
-	"license": "MIT",
 	"private": true,
-	"packageManager": "pnpm@9.10.0",
-	"engines": {
-		"node": ">=22.0.0",
-		"pnpm": ">=9.0.0"
-	},
+	"description": "GitHub Action for generating a changelog of all the git commits between the new tag and the latest tags.",
 	"keywords": [
 		"github-action",
 		"action",
 		"changelog"
 	],
+	"homepage": "https://github.com/kitschpatrol/github-action-release-changelog",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kitschpatrol/github-action-release-changelog.git"
+	},
+	"license": "MIT",
+	"type": "module",
 	"scripts": {
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
-		"fix": "prettier-config --fix",
-		"lint": "prettier-config --check",
+		"fix": "ksc-prettier fix",
+		"lint": "ksc-prettier lint",
 		"updatetag": "git tag -d v2 && git push origin :v2 && git tag -a v2 -m '' && git push origin v2"
 	},
 	"devDependencies": {
-		"@kitschpatrol/prettier-config": "^4.7.9"
+		"@kitschpatrol/prettier-config": "^5.8.1"
+	},
+	"packageManager": "pnpm@10.20.0",
+	"engines": {
+		"node": ">=22.0.0",
+		"pnpm": ">=10.0.0"
 	}
 }
