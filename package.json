@@ -1,6 +1,6 @@
 {
 	"name": "github-action-release-changelog",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"private": true,
 	"description": "GitHub Action for generating a changelog of all the git commits between the new tag and the latest tags.",
 	"keywords": [
