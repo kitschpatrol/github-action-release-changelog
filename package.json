@@ -1,6 +1,6 @@
 {
 	"name": "github-action-release-changelog",
-	"version": "2.0.6",
+	"version": "2.0.7",
 	"private": true,
 	"description": "GitHub Action for generating a changelog of all the git commits between the new tag and the latest tags.",
 	"keywords": [
@@ -14,6 +14,18 @@
 		"url": "git+https://github.com/kitschpatrol/github-action-release-changelog.git"
 	},
 	"license": "MIT",
+	"author": {
+		"name": "Javier Bullrich",
+		"email": "javier@bullrich.dev",
+		"url": "https://bullrich.dev"
+	},
+	"contributors": [
+		{
+			"name": "Eric Mika",
+			"email": "eric@ericmika.com",
+			"url": "https://ericmika.com"
+		}
+	],
 	"type": "module",
 	"scripts": {
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
@@ -22,9 +34,9 @@
 		"updatetag": "git tag -d v2 && git push origin :v2 && git tag -a v2 -m '' && git push origin v2"
 	},
 	"devDependencies": {
-		"@kitschpatrol/prettier-config": "^6.0.1"
+		"@kitschpatrol/prettier-config": "^6.1.0"
 	},
-	"packageManager": "pnpm@10.30.3",
+	"packageManager": "pnpm@10.33.0",
 	"engines": {
 		"node": ">=22.0.0",
 		"pnpm": ">=10.0.0"
