@@ -1,4 +1,4 @@
-Unmodified fork of [Bullrich/generate-release-changelog](https://github.com/bullrich/generate-release-changelog).
+Lightly modified fork of [Bullrich/generate-release-changelog](https://github.com/bullrich/generate-release-changelog).
 
 Original readme below:
 
