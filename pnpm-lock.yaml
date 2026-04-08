@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@kitschpatrol/prettier-config':
-        specifier: ^7.1.0
-        version: 7.1.0(@types/node@25.5.2)(svelte@5.55.1)(typescript@6.0.2)
+        specifier: ^7.2.0
+        version: 7.2.0(@types/node@25.5.2)(svelte@5.55.1)(typescript@6.0.2)
 
 packages:
 
@@ -41,8 +41,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kitschpatrol/prettier-config@7.1.0':
-    resolution: {integrity: sha512-aKy3u7wSjnWQrBwsV2Pscwfb805OGR7sLNtfAgOUcX6HrnVgSeTi0WJPN/FyD7hGBfrgNfdznvd8wdFD+z61vg==}
+  '@kitschpatrol/prettier-config@7.2.0':
+    resolution: {integrity: sha512-hAhtcTpLlCKQivbzsIwJ98iFDbUWa5/Xrgm6ixnLG4K1Bry05DM/BxIjNNY0UBLOzmJsFblUJnVZA1ibQC8U7Q==}
     engines: {node: '>=22.18.0'}
     hasBin: true
 
@@ -801,7 +801,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kitschpatrol/prettier-config@7.1.0(@types/node@25.5.2)(svelte@5.55.1)(typescript@6.0.2)':
+  '@kitschpatrol/prettier-config@7.2.0(@types/node@25.5.2)(svelte@5.55.1)(typescript@6.0.2)':
     dependencies:
       '@pinojs/json-colorizer': 4.0.0
       '@prettier/plugin-php': 0.25.0(prettier@3.8.1)
