@@ -12,9 +12,13 @@ else
   changelog=$(git log --oneline --no-decorate)
 fi
 
-echo $changelog
+echo "$changelog"
 
-changelog="${changelog//$'\n'/'%0A' - }"
-changelog=" - ${changelog//$'\r'/'%0D'}"
+# Format as markdown list
+changelog=$(echo "$changelog" | sed 's/^/ - /')
 
-echo "changelog=$changelog" >> "$GITHUB_OUTPUT"
+{
+  echo "changelog<<EOF"
+  echo "$changelog"
+  echo "EOF"
+} >> "$GITHUB_OUTPUT"
