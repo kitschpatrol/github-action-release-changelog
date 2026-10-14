@@ -1,7 +1,6 @@
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
-  - 'case-police'
   - '*cspell*'
   - '*eslint*'
   - '*knip*'
@@ -9,3 +8,4 @@ publicHoistPattern:
   - '*prettier*'
   - '*remark*'
   - '*stylelint*'
+  - 'case-police'

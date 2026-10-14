@@ -1,0 +1,4 @@
+upstreams:
+  - repo: Bullrich/generate-release-changelog
+    parent: true
+  - repo: ScottBrenner/generate-changelog-action
