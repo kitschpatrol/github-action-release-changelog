@@ -1,3 +1,10 @@
+<!-- badges({ githubRelease: true }) -->
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
+[![GitHub Release](https://img.shields.io/github/v/release/kitschpatrol/github-action-release-changelog?label=Release)](https://github.com/kitschpatrol/github-action-release-changelog/releases/latest)
+
+<!-- /badges -->
+
 Lightly modified fork of [Bullrich/generate-release-changelog](https://github.com/bullrich/generate-release-changelog).
 
 Original readme below:
