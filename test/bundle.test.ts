@@ -8,6 +8,16 @@ import { describe, expect, it, onTestFinished } from 'vitest'
 const distributionEntry = fileURLToPath(new URL('../dist/index.js', import.meta.url))
 const OUTPUT_HEADER = /^changelog<</v
 
+function parseChangelogOutput(output: string): string {
+	const lines = output.replaceAll('\r\n', '\n').trimEnd().split('\n')
+	const header = lines.shift() ?? ''
+	expect(header).toMatch(OUTPUT_HEADER)
+	const delimiter = header.slice('changelog<<'.length)
+	expect(lines.pop()).toBe(delimiter)
+	expect(lines).not.toContain(delimiter)
+	return lines.join('\n')
+}
+
 async function createRepository({ initializeGit = true, tagged = true } = {}) {
 	const temporary = await mkdtemp(join(tmpdir(), 'release-changelog-'))
 	onTestFinished(async () => rm(temporary, { force: true, recursive: true }))
@@ -79,13 +89,7 @@ async function createRepository({ initializeGit = true, tagged = true } = {}) {
 			await writeFile(outputFile, '')
 			await execa(process.execPath, [entrypoint], { cwd: repository, env: environment })
 			const output = await readFile(outputFile, 'utf8')
-			const lines = output.trimEnd().split('\n')
-			const header = lines.shift() ?? ''
-			expect(header).toMatch(OUTPUT_HEADER)
-			const delimiter = header.slice('changelog<<'.length)
-			expect(lines.pop()).toBe(delimiter)
-			expect(lines).not.toContain(delimiter)
-			return lines.join('\n')
+			return parseChangelogOutput(output)
 		},
 		async write(filename: string, content: string) {
 			const destination = join(repository, filename)
@@ -94,6 +98,20 @@ async function createRepository({ initializeGit = true, tagged = true } = {}) {
 		},
 	}
 }
+
+describe('GitHub output parsing', () => {
+	it.each([
+		['LF framing and content', '\n', '\n'],
+		['Windows framing with LF content', '\r\n', '\n'],
+		['Windows framing with CRLF content', '\r\n', '\r\n'],
+	])('reads %s', (_description, lineEnding, contentEnding) => {
+		const notes = '### Added\n\n- Latest change\n\n```text\nEOF\n```'
+		const delimiter = 'OUTPUT_END'
+		const content = notes.replaceAll('\n', () => contentEnding)
+		const output = `changelog<<${delimiter}${lineEnding}${content}${lineEnding}${delimiter}${lineEnding}`
+		expect(parseChangelogOutput(output)).toBe(notes)
+	})
+})
 
 describe('bundled action', () => {
 	it.each(['changelog.md', 'docs/changelog.md'])(
