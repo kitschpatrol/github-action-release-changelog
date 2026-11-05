@@ -1,6 +1,6 @@
 {
 	"name": "github-action-release-changelog",
-	"version": "2.0.10",
+	"version": "3.0.0",
 	"private": true,
 	"description": "GitHub Action to generate release notes from a changelog or git history.",
 	"keywords": [
