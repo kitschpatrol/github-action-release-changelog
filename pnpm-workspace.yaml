@@ -1,8 +1,13 @@
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
 minimumReleaseAgeExclude:
-  - '@kitschpatrol/mdat-config@8.14.0'
-  - '@kitschpatrol/prettier-config@8.14.0'
   - mdat@3.6.6
   - remark-mdat@3.1.2
+peerDependencyRules:
+  allowedVersions:
+    # This plugin's peer range still stops at ESLint 9.
+    eslint-plugin-jsx-a11y@6>eslint: ^10.0.0
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'

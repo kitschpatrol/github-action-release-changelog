@@ -1,12 +1,12 @@
 name: 'generate-release-changelog'
-description: 'GitHub Action for generating a changelog of all commits in a release'
-author: 'Javier Bullrich'
+description: 'Use changelog release notes or generate a changelog of commits in a release'
+author: 'kitschpatrol'
 outputs:
   changelog:
-    description: 'Generate changelog'
+    description: 'Latest released changelog section, or a Markdown list of commits'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node24'
+  main: 'dist/index.js'
 branding:
   icon: 'edit'
   color: 'gray-dark'

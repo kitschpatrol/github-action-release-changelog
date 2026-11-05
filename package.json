@@ -2,7 +2,7 @@
 	"name": "github-action-release-changelog",
 	"version": "2.0.10",
 	"private": true,
-	"description": "GitHub Action for generating a changelog of all the git commits between the new tag and the latest tags.",
+	"description": "GitHub Action to generate release notes from a changelog or git history.",
 	"keywords": [
 		"github-action",
 		"action",
@@ -15,32 +15,49 @@
 	},
 	"license": "MIT",
 	"author": {
-		"name": "Javier Bullrich",
-		"email": "javier@bullrich.dev",
-		"url": "https://bullrich.dev"
+		"name": "Eric Mika",
+		"email": "eric@ericmika.com",
+		"url": "https://ericmika.com"
 	},
 	"contributors": [
 		{
-			"name": "Eric Mika",
-			"email": "eric@ericmika.com",
-			"url": "https://ericmika.com"
+			"name": "Javier Bullrich",
+			"email": "javier@bullrich.dev",
+			"url": "https://bullrich.dev"
+		},
+		{
+			"name": "Scott Brenner",
+			"url": "https://github.com/ScottBrenner"
 		}
 	],
 	"type": "module",
 	"scripts": {
+		"build": "tsx scripts/build.ts",
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
-		"fix": "ksc-mdat fix && ksc-prettier fix",
-		"lint": "ksc-mdat lint && ksc-prettier lint",
-		"release": "bumpp --commit 'Release: %s' && ./scripts/sync-major-tag.sh"
+		"fix": "ksc fix",
+		"lint": "ksc lint",
+		"release": "pnpm run build && bumpp --commit 'Release: %s' --all && ./scripts/sync-major-tag.sh",
+		"test": "vitest run"
 	},
 	"devDependencies": {
-		"@kitschpatrol/mdat-config": "^8.14.0",
-		"@kitschpatrol/prettier-config": "^8.14.0",
-		"bumpp": "^12.3.0"
+		"@actions/core": "^3.0.1",
+		"@kitschpatrol/shared-config": "^8.14.1",
+		"@types/mdast": "^4.0.4",
+		"@types/node": "~24.13.6",
+		"bumpp": "^12.3.0",
+		"esbuild": "^0.28.2",
+		"execa": "^10.2.1",
+		"mdast-util-from-markdown": "^2.1.0",
+		"mdast-util-to-string": "^4.0.0",
+		"shx": "^0.4.0",
+		"tsx": "^4.23.15",
+		"typescript": "~6.0.3",
+		"unist-util-visit": "^5.2.0",
+		"vitest": "^5.1.0"
 	},
 	"packageManager": "pnpm@12.16.1",
 	"engines": {
-		"node": ">=22.0.0",
+		"node": "^24.16.0 || >=26.3.0",
 		"pnpm": ">=10.0.0"
 	}
 }

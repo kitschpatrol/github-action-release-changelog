@@ -48,7 +48,6 @@ jobs:
             ${{ steps.release-notes.outputs.changelog }}
           files: |
             readme.md
-            README.md
             LICENSE
             license.txt
             CHANGELOG
